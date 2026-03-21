@@ -12,23 +12,19 @@ class Book
         string isbn;
         string title; 
         double price; 
-        int copy;
-        string rack;
-        string status;
+        vector<Book *>Book_list;
 
     public: 
-
-
+        Book(int bookId , string author ,string subject;
+        string isbn;
+        string title; 
+        double price; )
         int getBookId( void ){ return bookId; }
         string getBookauthor( void ){ return author; }
         string getBooksubject( void ){ return subject; }
         string getBookisbn( void ){ return isbn; }
         string getBookTitle( void ){ return title; }
         double getBookPrice( void ){ return price;  }
-        int getBookcopies( void ){ return copy;  }
-        string getBookRack( void ){ return rack; }
-        string getBookStatus( void ){ return status; }
-        
        
         void setBookId( void ){
             cout<<" Enter Book ID : ";
@@ -56,7 +52,7 @@ class Book
         }
 
 
-        void acceptRecord( void )
+        void acceptBook( void )
         {
                 cout<<" Enter Book ID : ";
                 cin>>bookId;
@@ -82,15 +78,10 @@ class Book
             cout<<"________________________________________"<<endl;
         }
 
-        // void addBooks(Book *book)
-        // {
-        //     Book_taken.push_back(book);
-        // }
-        // vector<Book *> &getbookTaken()
-        // {
-        //     return Book_taken;
-        // }
-
+        void addBooks(Book *book)
+        {
+            Book_list.push_back(book);
+        }
 
     ~Book(){
         cout<<"Book Distructor called"<<endl;
@@ -158,13 +149,13 @@ class Copy : public Book
 };
 
 
-// void addDummyBooks(vector<Book *> &Book_list)
-// {
-//     Book_list.push_back(new Book(1, "C++", 5000));
-//     Book_list.push_back(new Book(2, "Java", 7000));
-//     Book_list.push_back(new Book(3, "Python", 7000));
-//     Book_list.push_back(new Book(4, "DSA", 6000));
-// }
+void addDummyBooks(vector<Book *> &Book_list)
+{
+    Book_list.push_back(new Book(1, "C++", 5000));
+    Book_list.push_back(new Book(2, "Java", 7000));
+    Book_list.push_back(new Book(3, "Python", 7000));
+    Book_list.push_back(new Book(4, "DSA", 6000));
+}
 
 // void addDummyMembers(vector<Member *> &member_list)
 // {
@@ -186,35 +177,35 @@ class Copy : public Book
 // }
 
 
-// void IssueCopy(vector<Copy*> &Copy_list, vector<Member*> &Member_list)
-// {
-//     bool found = false; 
-//     int Member_id; 
-//     cout<<"Enter the Member Id :"; 
-//     cin>>Member_id; 
-//     for(int i = 0 ; i < Member_list.size( ) ; i++)
-//     {
-//         if(Member_id == Member_list[i]->getmemberId( ))
-//         {
-//             found = true; 
-//             displayAllBooks(Book_list);
-//             int copy_id; 
-//             cout<<"Enter the Copy Id: "; 
-//             cin>>copy_id; 
-//             for(int j = 0 ; j < copy_list.size( ) ; j++)
-//             {
-//                 if(copy_id == copy_list[j]->getCopyId( ))
-//                 {
-//                     Member_list[i]->addBook(book_list[j]);
-//                     break;  
-//                 }
-//             } 
-//             break;  
-//         }
-//     }
-//     if(!found)
-//       cout<<"Member not found"<<endl; 
-// }
+void IssueCopy(vector<Copy*> &Copy_list, vector<Member *> &Member_list)
+{
+    bool found = false; 
+    int Member_id; 
+    cout<<"Enter the Member Id :"; 
+    cin>>Member_id; 
+    for(int i = 0 ; i < Member_list.size( ) ; i++)
+    {
+        if(Member_id == Member_list[i]->getmemberId( ))
+        {
+            found = true; 
+            displayAllBooks(Book_list);
+            int copy_id; 
+            cout<<"Enter the Copy Id: "; 
+            cin>>copy_id; 
+            for(int j = 0 ; j < copy_list.size( ) ; j++)
+            {
+                if(copy_id == copy_list[j]->getCopyId( ))
+                {
+                    Member_list[i]->addBook(book_list[j]);
+                    break;  
+                }
+            } 
+            break;  
+        }
+    }
+    if(!found)
+      cout<<"Member not found"<<endl; 
+}
 
 int menuList( void )
 {
