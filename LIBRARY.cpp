@@ -1,5 +1,6 @@
 #include<iostream> 
 #include<vector>
+sairaj
 using namespace std; 
 int PASSWORD = 00;
 
@@ -15,10 +16,8 @@ class Book
         vector<Book *>Book_list;
 
     public: 
-        Book(int bookId , string author ,string subject;
-        string isbn;
-        string title; 
-        double price; )
+        Book(int bookId , string author ,string subject,string isbn, string title ,double price )
+        {   }
         int getBookId( void ){ return bookId; }
         string getBookauthor( void ){ return author; }
         string getBooksubject( void ){ return subject; }
